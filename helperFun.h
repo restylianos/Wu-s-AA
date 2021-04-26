@@ -12,8 +12,7 @@ void swap_nums(int* fist_num , int* second_num)
 // returns absolute value of number
 float get_abs_num(float input_num)
 {
-    if (input_num < 0) return -input_num;
-    else return input_num;
+    return abs(input_num);
 }
   
 //returns integer part of a floating point number
