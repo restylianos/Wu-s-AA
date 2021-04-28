@@ -4,19 +4,26 @@
 #include <GL/glut.h>
 #endif
 
-#include "helperFun.h"
+
+
+#include "helper_funs.h"
 #include <stdio.h>
+
+
+
 
 //set global vars
 int def_x1=20, def_y1=30, def_x2=550, def_y2=150;
 //def stands for default!
 int first_x,first_y,second_x,second_y;
 
+
 void myInit() {
 	glClearColor( 0,0,0,0);
     glClear(GL_COLOR_BUFFER_BIT);
-	
 	gluOrtho2D(0, 640, 0, 480);
+    //make pointers bigger to make results more clear
+    glPointSize(3.0f);
     return;
 }
 
@@ -41,7 +48,8 @@ void draw_lines(int x0 , int y0 , int x1 , int y1)
     //get slope
 
 
-    // swap the co-ordinates if slope > 1 or we
+    // swap the co-ordinates if slope > 1 
+    
     // draw backwards
     if (steep){
         swap_nums(&x0 , &y0);
@@ -68,8 +76,7 @@ void draw_lines(int x0 , int y0 , int x1 , int y1)
     // main loop
     if (steep){
         int x;
-        for (x = xpxl1 ; x <=xpxl2 ; x++)
-        {
+        for (x = xpxl1 ; x <=xpxl2 ; x++){
             // pixel coverage is determined by fractional
             // part of y co-ordinate
             draw_pixels(get_integer_part(intersectY), x,get_round_fract(intersectY));
@@ -80,8 +87,7 @@ void draw_lines(int x0 , int y0 , int x1 , int y1)
     }
     else{
         int x;
-        for (x = xpxl1 ; x <=xpxl2 ; x++)
-        {
+        for (x=xpxl1;x<=xpxl2;x++){
             // pixel coverage is determined by fractional
             // part of y co-ordinate
             draw_pixels(x, get_integer_part(intersectY),get_round_fract(intersectY));
@@ -90,7 +96,7 @@ void draw_lines(int x0 , int y0 , int x1 , int y1)
             intersectY += gradient;
         }
     }
-  return;
+    return;
 }
 
 
@@ -110,8 +116,9 @@ void myDisplay() {
 
 int main(int argc, char **argv) {
 
-	printf( "\033[32;1mUsage:\nCoordinates given via terminal: ./a.out x1,y1,x2,y2\nUsing default coordinates which are: (x1,y1) = [20,30] && (x2,y2) = [550, 150]\033[0m\n");
-    
+	printf( "\033[32;1m[+] Usage:\n[1] Coordinates given via terminal: ./a.out x1,y1,x2,y2\n[2] Using default coordinates which are: (x1,y1) = [20,30] && (x2,y2) = [550, 150]\033[0m\n");
+    printf( "\033[31;1mRed line is made using a simple drawing algorithm\nWhite line shows the AA line\033[0m\n");
+
     if(argc > 1){
         printf("ok");
         first_x = strtol(argv[1],NULL,10);
@@ -131,8 +138,6 @@ int main(int argc, char **argv) {
 	myInit();
     glutDisplayFunc(myDisplay);
     
-	
-    glPointSize(2.0f);
 	glutMainLoop();
 
     return 0;
