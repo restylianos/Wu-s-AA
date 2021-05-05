@@ -3,10 +3,8 @@
 #else
 #include <GL/glut.h>
 #endif
-
 #include "helper_funs.h"
 #include <stdio.h>
-
 
 //set global vars
 int def_x1=20, def_y1=30, def_x2=550, def_y2=150;
@@ -14,8 +12,6 @@ int def_x1=20, def_y1=30, def_x2=550, def_y2=150;
 int first_x,first_y,second_x,second_y;
 
 void myDisplay();
-
-
 
 int main(int argc, char **argv) {
 
