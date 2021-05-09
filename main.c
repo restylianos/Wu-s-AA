@@ -6,9 +6,8 @@
 #include "helper_funs.h"
 #include <stdio.h>
 
-//set global vars
+//set global vars def stands for default!
 int def_x1=20, def_y1=30, def_x2=550, def_y2=150;
-//def stands for default!
 int first_x,first_y,second_x,second_y;
 
 void myDisplay();
@@ -25,8 +24,6 @@ int main(int argc, char **argv) {
         second_x = strtol(argv[3],NULL,10);
         second_y = strtol(argv[4],NULL,10);
     }
-
-    
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
@@ -52,6 +49,5 @@ void myDisplay() {
 	
     glEnd();
 	glFlush();
-    
     return;
 }

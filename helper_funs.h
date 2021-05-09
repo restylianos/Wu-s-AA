@@ -9,19 +9,20 @@ void swap_nums(int* fist_num , int* second_num)
     *second_num = temp;
 }
   
-// returns absolute value of number
+// returns abs of number
 float get_abs_num(float input_num)
 {
     return abs(input_num);
 }
   
-//returns integer part of a floating point number
+//returns integer part of float
 int get_integer_part(float input_num)
 {
     return (int)input_num;
 }
-//returns fractional part of a num
 
+
+//returns fract part of float
 float get_fract_part(float input_num)
 {
     if (input_num>0) return input_num - get_integer_part(input_num);
@@ -29,12 +30,13 @@ float get_fract_part(float input_num)
   
 }
   
-//returns 1 - fractional part of number
+//returns 1-fract part of float
 float get_round_fract(float input_num)
 {
     return 1 - get_fract_part(input_num);
 }
 
+//draw pixels function
 void draw_pixels( int x , int y , float brightness)
 {
     glColor4f((1-brightness),(1-brightness),(1-brightness),1);
@@ -42,6 +44,7 @@ void draw_pixels( int x , int y , float brightness)
     return;
 }
 
+//used to create normal line withought AA
 void draw_normal_pixels(int x,int y){
     //use y+20 to create a new simple line 20 px higher than the AA line
     y +=20;
@@ -49,6 +52,7 @@ void draw_normal_pixels(int x,int y){
     glVertex2i(x,y);
 }
 
+//init function for openGL
 void myInit() {
 	glClearColor( 0,0,0,0);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -58,6 +62,7 @@ void myInit() {
     return;
 }
 
+//driver function to decide how to draw
 void draw_lines(int x0 , int y0 , int x1 , int y1)
 {
     int i;
@@ -68,9 +73,8 @@ void draw_lines(int x0 , int y0 , int x1 , int y1)
     //get slope
 
 
-    // swap if slope > 1 
+    // swap if slope > 1 && draw backwards
 
-    // draw backwards
     if (slope){
         swap_nums(&x0 , &y0);
         swap_nums(&x1 , &y1);
